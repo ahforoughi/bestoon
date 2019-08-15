@@ -122,3 +122,7 @@ def submit_income(request):
     return JsonResponse({
             'status': 'ok',
         }, encoder=JSONEncoder)
+
+def index(request):
+    context = {}
+    return render(request, 'index.html', context)
