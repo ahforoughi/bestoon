@@ -1,0 +1,137 @@
+{% extends "template.html"%}
+{% load staticfiles %}
+
+{% block content %}
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <a href="http://jadi.net/tag/بستون">
+این برنامه شدیداً در حال توسعه است. اینجا را ببینید
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  {% if message %}
+  <div class="bs-callout bs-callout-info">
+    <h5>{{ message|safe }}</h5>
+  </div>
+  {% endif %}
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">بستون</h3>
+        </div>
+        <div class="panel-body">
+
+<p>
+
+
+
+بستون یک پروژه در حال حرکته، پروژه‌ای برای استفاده جدی و پروژه‌ای برای یادگیری ساختن بخش فنی یک استارتاپ. توی بستون می‌تونین خرج‌ها و درآمدهاتون رو بنویسین و حساب زندگی‌تون رو داشته باشین. کافیه اینجا یک اکانت بسازین و یکی از کلاینت‌ها رو نصب کنین.
+</p>
+<p>
+این یک پروژه روحیه بخش هم هست. با <a href="http://jadi.net/tag/بستون">دیدن قدم به قدم مراحل ساخت پروژه</a> مطمئن می‌شین که با ترکیب راحتی از تلاش و سواد می‌شه یک سرویس واقعی راه انداخت و نیازی نیست برای تحقق ایده‌مون دست به دامن این و اون باشیم یا سال ها صبر کنیم.
+
+</p>
+<p>
+برای باز کردن اکانت
+<a href="{% url 'register' %}">به صفحه رجیستر شدن برین</a>
+و برای اطلاعات بیشتر مراجعه بکنین به
+<a href="http://github.com/jadijadi/bestoon/">
+  گیت هاب پروژه.
+</a>
+</p>
+        </div>
+        <p>
+
+        </p>
+      </div>
+
+
+<br /><br />
+
+
+
+</div>
+
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-body">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">
+            ماجرا چیه؟
+        </h3>
+      </div>
+  <p>
+      این در واقع یک سیستم نگهداری دخل و خرج شخصی است. پول‌هایی که در آوردین رو توش می‌زنین و پول‌هایی که خرج کردین رو یادداشت می‌کنین.
+      اما این سیستم شدیداً در ابتدای راهه، دلیلش؟ این سیستم داره به عنوان یک پروسه آموزش کار می‌کنه و
+      <a href="http://jadi.net/tag/بستون">
+        من قدم به قدم کارهایی که برای راه انداختن اینجا دارم می‌کنم رو منتشر کرده‌ام
+      </a>
+      .
+  </p>
+  <p>
+      در حال حاضر برای استفاده از این سیستم باید قدم‌های زیر رو پیش برین:
+
+      <ul>
+      <li> از صفحه رجیستریشن که این بغل و اون بالاست، ثبت نام کنین و توکن دریافت کنین</li>
+      <li> از یکی از کلاینت‌ها برای اتصال استفاده کنین. فعلا تنها کلاینت ما <a href="https://github.com/jadijadi/bestoon/tree/master/clients/commandline">کلاینت‌های کامند لاینی هستن که با کرل کار می کنن و لازمه کدی که دریافت کردین رو توی فایل کانفیگشون وارد کنین</a>. منطقاً در آینده کلاینت تحت وب و اپ و غیره هم خواهیم داشت.
+      <li> خرج و دخل‌ها رو وارد سیستم کنین و منتظر باشین که هی سیستم کامل‌تر بشه</li>
+      </ul>
+
+  </p>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
+
+
+{% block footer %}
+
+<script >
+$(document).ready(function () {
+        $(".subtaskinput").fadeOut(0);
+        $('.fa-square-o').hover(function () {
+            $(this).addClass('fa-check-square-o');
+            $(this).removeClass('fa-square-o');
+        }, function () {
+            $(this).addClass('fa-square-o');
+            $(this).removeClass('fa-check-square-o');
+        });
+
+});
+
+function showsubtaskinput(elementid){
+  if ($('.btn-'+elementid).text() == '+') {
+    $('.subtask-'+elementid).fadeIn(250);
+    $('.subtask-'+elementid).focus();
+    $('.btn-'+elementid).text ('-');
+  }
+  else {
+    $('.subtask-'+elementid).fadeOut(250);
+    $('.btn-'+elementid).text ('+');
+  }
+  // دگمه رو عوض کنیم به منفی و اگر منفی رو زد المنت رو حذف کنیم
+  return 0;
+}
+</script>
+
+<script type="text/javascript">
+$(".alert").fadeTo(10000, 500).slideUp(500, function(){
+    $(".alert").slideUp(10000);
+});
+</script>
+{% endblock %}

@@ -9,7 +9,12 @@ class Token(models.Model):
     def __unicode__(self):
         return "{}_TOKEN".format(self.user)
          
-
+class Passwordresetcodes(models.Model):
+    code = models.CharField(max_length=32)
+    email = models.CharField(max_length=120)
+    time = models.DateTimeField()
+    username = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)  # TODO: do not save password
 
 class Expence(models.Model):
     text = models.CharField(max_length=255)
@@ -17,7 +22,7 @@ class Expence(models.Model):
     amount = models.BigIntegerField()
     user = models.ForeignKey(User)
     def __unicode__(self):
-        return "{}-{}".format(self.date, self.amount)
+        return "{}-{}-{}".format(self.date, self.amount, self.user)
 
 
 class Income(models.Model):
@@ -26,7 +31,7 @@ class Income(models.Model):
     amount = models.BigIntegerField()
     user = models.ForeignKey(User)
     def __unicode__(self):
-        return "{}-{}".format(self.date, self.amount)
+        return "{}-{}-{}".format(self.date, self.amount, self.user)
     
 
       
