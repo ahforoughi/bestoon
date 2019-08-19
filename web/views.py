@@ -13,7 +13,7 @@ from .utils import grecaptcha_verify, get_client_ip
 from django.utils.crypto import get_random_string
 import string
 import time
-import random
+from django.db.models import Sum, Count
 
 # Create your views here.
 
@@ -126,3 +126,18 @@ def submit_income(request):
 def index(request):
     context = {}
     return render(request, 'index.html', context)
+
+@csrf_exempt
+def generalstat(request):
+    user_token = request.POST['token']
+    user_id = User.objects.filter(token__token=user_token).get()
+    income = Income.objects.filter(user = user_id).aggregate(Count('amount'), Sum('amount'))
+    expense = Expence.objects.filter(user = user_id).aggregate(Count('amount'), Sum('amount'))
+    conext = {}
+    conext['expense'] = expense
+    conext['income'] = income
+    return JsonResponse(conext, encoder=JSONEncoder)
+
+
+
+
