@@ -1,5 +1,4 @@
 # bestoon
-bestoon is a web application implimented with django framework based on jadi course.
-personally changed some functionality and progresses.
+bestoon is a personal acountant web application implimented with django framework.
 ## How to launch?
 like other django projects :)))
